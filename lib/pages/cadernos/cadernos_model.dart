@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'noticia_widget.dart' show NoticiaWidget;
+import 'cadernos_widget.dart' show CadernosWidget;
 import 'package:flutter/material.dart';
 
-class NoticiaModel extends FlutterFlowModel<NoticiaWidget> {
+class CadernosModel extends FlutterFlowModel<CadernosWidget> {
   @override
   void initState(BuildContext context) {}
 

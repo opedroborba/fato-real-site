@@ -1,18 +1,11 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/supabase/supabase.dart';
 
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 import '/index.dart';
 
@@ -42,32 +35,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => HomeWidget(),
+      errorBuilder: (context, state) => HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => HomeWidget(),
+          builder: (context, _) => HomePageWidget(),
         ),
         FFRoute(
-          name: HomeWidget.routeName,
-          path: HomeWidget.routePath,
-          builder: (context, params) => HomeWidget(),
+          name: HomePageWidget.routeName,
+          path: HomePageWidget.routePath,
+          builder: (context, params) => HomePageWidget(),
         ),
         FFRoute(
-          name: NoticiaWidget.routeName,
-          path: NoticiaWidget.routePath,
-          builder: (context, params) => NoticiaWidget(
-            noticia: params.getParam<NoticiasRow>(
-              'noticia',
-              ParamType.SupabaseRow,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: CadernoWidget.routeName,
-          path: CadernoWidget.routePath,
-          builder: (context, params) => CadernoWidget(
+          name: CadernosWidget.routeName,
+          path: CadernosWidget.routePath,
+          builder: (context, params) => CadernosWidget(
             caderno: params.getParam<CadernosRow>(
               'caderno',
               ParamType.SupabaseRow,
@@ -75,9 +58,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: CriaWidget.routeName,
-          path: CriaWidget.routePath,
-          builder: (context, params) => CriaWidget(),
+          name: NoticiaWidget.routeName,
+          path: NoticiaWidget.routePath,
+          builder: (context, params) => NoticiaWidget(
+            caderno: params.getParam<NoticiasRow>(
+              'caderno',
+              ParamType.SupabaseRow,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

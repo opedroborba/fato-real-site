@@ -32,7 +32,7 @@ class NoticiasRow extends SupabaseDataRow {
   String get capa => getField<String>('capa')!;
   set capa(String value) => setField<String>('capa', value);
 
-  List<String> get slug => getListField<String>('slug')!;
+  List<String> get slug => getListField<String>('slug');
   set slug(List<String> value) => setListField<String>('slug', value);
 
   int get idCaderno => getField<int>('id_caderno')!;
